@@ -13,7 +13,7 @@ module.exports = {
     ],
     root: true,
     env: {
-        node: true,
+        browser: true,
         jest: true,
     },
     rules: {

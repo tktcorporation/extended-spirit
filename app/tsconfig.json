@@ -1,18 +1,14 @@
 {
-    "compilerOptions": {
-      "module": "amd",
-      "declaration": true,
-      "removeComments": true,
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "strictPropertyInitialization": true,
-      "strict": true,
-      "noImplicitAny": true,
-      "strictNullChecks": true,
-      "target": "es2019",
-      "sourceMap": true,
-      "outFile": "./dist/background.js",
-      "baseUrl": "./",
-      "incremental": true
-    }
-  }
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "lib": ["es5", "es6", "DOM"],
+    "strict": true,
+    "rootDir": "src",
+    "esModuleInterop": true,
+    "typeRoots": [ "node_modules/@types"]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
