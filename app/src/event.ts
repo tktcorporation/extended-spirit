@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { getOrganizationsData, getAccessToken, getProject } from './service';
 
 enum MenuId {
   GetOrgs,
@@ -46,45 +46,3 @@ chrome.contextMenus.onClicked.addListener(async (item) => {
     alert(error.message);
   }
 });
-
-const getOrganizationsData = async () => {
-  const response = await axios.get(
-    'https://app.holaspirit.com/api/public/organizations',
-  );
-  return JSON.stringify(response.data);
-};
-
-const getProject = async (
-  accessToken: string,
-  projectId: string,
-  organizationId = '6048000e343b9430fb74ecf9',
-) => {
-  const client = axios.create({
-    baseURL: 'https://app.holaspirit.com',
-    headers: {
-      'Content-Type': 'application/json',
-      authorization: `Bearer ${accessToken}`,
-    },
-    responseType: 'json',
-  });
-  const response = await client.get(
-    `/api/organizations/${organizationId}/projects/${projectId}`,
-  );
-  return JSON.stringify(response.data);
-};
-
-const getAccessToken = async (): Promise<string> => {
-  const cookies = await new Promise<chrome.cookies.Cookie[]>((resolve) => {
-    chrome.cookies.getAll(
-      { domain: 'app.holaspirit.com', name: 'holaAppToken' },
-      (cookie) => {
-        resolve(cookie);
-      },
-    );
-  });
-  if (cookies.length < 1) {
-    throw Error('認証トークンが見つかりませんでした');
-  }
-  const holaAppTokenEncoded = cookies[0].value;
-  return JSON.parse(decodeURIComponent(holaAppTokenEncoded)).access_token;
-};
