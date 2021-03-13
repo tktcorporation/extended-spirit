@@ -1,12 +1,12 @@
 {
-    "manifest_version": 2,
-    "name": "context menus example",
-    "version": "1.0",
+  "manifest_version": 2,
+  "name": "context menus example",
+  "version": "1.0",
 
-    "background": {
-        "scripts": ["event.js"],
-        "persistent": false
-    },
+  "background": {
+    "scripts": ["event.js"],
+    "persistent": false
+  },
 
-    "permissions": ["activeTab", "contextMenus", "cookies", "<all_urls>"]
+  "permissions": ["activeTab", "contextMenus", "cookies", "<all_urls>"]
 }
