@@ -1,9 +1,12 @@
 {
-  "name": "Hello, World!",
-  "version": "1.0",
-  "manifest_version": 3,
-  "background": {
-    "service_worker": "background.js"
-  },
-  "action": {}
+    "manifest_version": 2,
+    "name": "context menus example",
+    "version": "1.0",
+
+    "background": {
+        "scripts": ["event.js"],
+        "persistent": false
+    },
+
+    "permissions": ["activeTab", "contextMenus"]
 }
