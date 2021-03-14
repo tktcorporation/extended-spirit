@@ -13,12 +13,11 @@ export const getProject = async (
   organizationId = '6048000e343b9430fb74ecf9',
 ): Promise<string> => {
   const client = getHolaspiritHttpClient(accessToken);
-  const response = await client.get(
-    `/api/organizations/${organizationId}/projects/${projectId}`,
-  );
-  if (response.status !== 200) {
-    throw Error('プロジェクトの取得に失敗しました');
-  }
+  const response = await client
+    .get(`/api/organizations/${organizationId}/projects/${projectId}`)
+    .catch((error) => {
+      throw Error(`プロジェクトの取得に失敗しました: ${error.message}`);
+    });
   return JSON.stringify(response.data);
 };
 
