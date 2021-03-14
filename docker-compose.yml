@@ -1,6 +1,7 @@
 version: "3.7"
 services:
   app:
+    command: /bin/bash -c "yarn start"
     build: ./app
     container_name: app
     working_dir: /app
